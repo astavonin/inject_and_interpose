@@ -1,7 +1,7 @@
-GCC ?= gcc
+GCC ?= clang
 ARCH = 
 ifeq "$(findstring -arch,$(GCC))" ""
-ARCH = -arch i386 -arch x86_64 -arch ppc #-arch ppc64
+ARCH = -arch i386 -arch x86_64
 endif
 
 all: testlib.dylib tester testputs
@@ -13,4 +13,4 @@ tester: tester.c ../inject.c ../inject.h Makefile
 testputs: testputs.c Makefile
 	$(GCC) -o testputs testputs.c
 clean:
-	rm -f tester testlib.dylib testputs
+	rm -fr tester testlib.dylib testputs tester.dSYM
